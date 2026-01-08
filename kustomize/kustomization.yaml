@@ -1,0 +1,2 @@
+resources:
+- cluster-api-control-plane-provider-kamaji-app.yaml
