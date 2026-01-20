@@ -1,0 +1,42 @@
+---
+apiVersion: konfigure.giantswarm.io/v1alpha1
+kind: Konfiguration
+metadata:
+  name: kamaji-addons-collection-konfiguration
+  namespace: giantswarm
+spec:
+  targets:
+    schema:
+      reference:
+        name: management-cluster-configuration
+        namespace: giantswarm
+    defaults:
+      variables:
+        - name: installation
+          value: "${cluster_name}"
+    iterations:
+      cluster-api-control-plane-provider-kamaji:
+        variables:
+          - name: app
+            value: cluster-api-control-plane-provider-kamaji
+      kamaji:
+        variables:
+          - name: app
+            value: kamaji
+      local-path-provisioner:
+        variables:
+          - name: app
+            value: local-path-provisioner
+  destination:
+    namespace: giantswarm
+    naming:
+      suffix: konfiguration
+  reconciliation:
+    interval: 1m
+    retryInterval: 10s
+    suspend: false
+  sources:
+    flux:
+      gitRepository:
+        name: "giantswarm-config"
+        namespace: "flux-giantswarm"
