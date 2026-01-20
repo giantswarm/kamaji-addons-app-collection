@@ -1,3 +1,4 @@
 resources:
 - cluster-api-control-plane-provider-kamaji-app.yaml
+- kamaji-app.yaml
 - local-path-provisioner-app.yaml
