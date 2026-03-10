@@ -1,4 +1,3 @@
 resources:
-- kamaji.yaml
 - konfiguration.v2.yaml
 - local-path-provisioner.yaml
